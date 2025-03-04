@@ -1,0 +1,87 @@
+/* src/components/SupervisorDashboard.css */
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the container takes at least the full height of the viewport */
+    background-color: #f9f9f9; /* Light background color */
+    padding: 20px; /* Padding around the container */
+}
+
+.main-content {
+    flex: 1; /* Allow the main content to grow */
+    background-color: #ffffff; /* White background for the main content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Padding inside the main content */
+    margin-bottom: 20px; /* Space below the main content */
+}
+
+h1 {
+    font-size: 24px; /* Larger font size for main headings */
+    color: #333; /* Dark text color */
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+h2 {
+    font-size: 20px; /* Slightly smaller font size for subheadings */
+    color: #555; /* Medium dark text color */
+    margin-top: 20px; /* Space above the subheading */
+    margin-bottom: 10px; /* Space below the subheading */
+}
+
+ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+li {
+    margin-bottom: 10px; /* Space between list items */
+}
+
+a {
+    text-decoration: none; /* Remove underline from links */
+    color: #007bff; /* Bootstrap primary color */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+a:hover {
+    color: #0056b3; /* Darker shade on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
+.video-instructions-container {
+    margin-top: 30px; /* Space above the video instructions section */
+    padding: 15px; /* Padding around the video instructions */
+    background-color: #f1f1f1; /* Light gray background for the video section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.video-instructions-container h1 {
+    font-size: 22px; /* Font size for video instructions heading */
+    color: #333; /* Dark text color */
+}
+
+.video-instructions-container p {
+    color: #666; /* Medium gray text color for instructions */
+    margin-bottom: 15px; /* Space below the paragraph */
+}
+button {
+    background-color: white;  /* Set background to white */
+    color: black;  /* Set text color to black */
+    border: 1px solid gray;  /* Optional: Add a border */
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+  }
+  
+/* src/components/Dashboard.css */
+.w-7-10 {
+    width: 70%; /* Set width to 70% */
+}

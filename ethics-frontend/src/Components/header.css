@@ -1,0 +1,39 @@
+/* src/components/Header.css */
+.header {
+    background-color: #ffffff; 
+    color: rgb(40, 76, 131);              
+    padding: 2rem;            /* Padding around the header */
+    display: flex;            /* Flexbox for layout */
+    justify-content: space-between; /* Space between title and user info */
+    align-items: center;      /* Center items vertically */
+    position: fixed;          /* Fixes the header at the top */
+    top: 0;                   /* Aligns it to the top */
+    left: 0;                  /* Aligns it to the left */
+    right: 0;                 /* Aligns it to the right */
+    z-index: 1000;            /* Ensures it stays above other content */
+}
+
+.header-title {
+    margin: 0;                /* Remove default margin */
+}
+
+.user-info {
+    display: flex;            /* Flexbox for user info */
+    align-items: center;      /* Center items vertically */
+}
+
+.user-name {
+    margin-right: 1rem;      /* Space between name and button */
+}
+
+.logout-button {
+    background-color: #71abf7; /* Red background for logout */
+    color: white;              /* White text */
+    border: none;              /* No border */
+    padding: 0.5rem 1rem;     /* Padding for button */
+    cursor: pointer;           /* Pointer cursor on hover */
+}
+
+.logout-button:hover {
+    background-color: #71abf7; /* Darker red on hover */
+}

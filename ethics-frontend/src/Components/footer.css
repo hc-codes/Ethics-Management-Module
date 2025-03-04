@@ -1,0 +1,21 @@
+/* src/components/Footer.css */
+.footer {
+    position: sticky; 
+    background-color: #f1f1f1; /* Light gray background */
+    color: #333;               /* Dark text color */
+    padding: 20px;             /* Padding around the footer */
+    text-align: center;        /* Center text */
+}
+
+.footer-links {
+    margin-top: 10px;          /* Space above the links */
+}
+
+.footer-links a {
+    color: #007bff;            /* Link color */
+    text-decoration: none;      /* Remove underline */
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+}

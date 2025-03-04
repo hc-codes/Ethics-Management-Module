@@ -1,0 +1,34 @@
+/* src/components/NavBar.css */
+.navbar {
+    background-color: rgb(166, 219, 240);
+    padding: 1rem;
+    position: fixed; /* Fixes the navbar at the top */
+    top: 90px;       /* Adjust this value based on the height of your header */
+    left: 0;         /* Aligns it to the left */
+    right: 0;        /* Aligns it to the right */
+    z-index: 999;    /* Ensures it stays below the header */
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.nav-item a:hover {
+    background-color: #555;
+}
+
+/* Add some margin to the top of the main content to prevent it from being hidden behind the navbar */
+body {
+    margin: 0;
+    padding-top: 120px; /* Adjust this value based on the combined height of your header and navbar */
+}
