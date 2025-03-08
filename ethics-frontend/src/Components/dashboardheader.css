@@ -1,0 +1,54 @@
+/* Header styling */
+.header {
+    background-color: #ffffff;
+    color: rgb(40, 76, 131);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header-title {
+    margin: 0;
+}
+
+/* User info container */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+/* Common button styles */
+.auth-button {
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Login button */
+.login-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* Logout button */
+.logout-button {
+    background-color: #71abf7;
+    color: white;
+    margin-left: 1rem;
+}
+
+.logout-button:hover {
+    background-color: #5a94e8;
+}

@@ -18,8 +18,7 @@ p {
 .app-container {
   display: flex;            /* Use flexbox for layout */
   flex-direction: column;   /* Stack children vertically */
-  min-height: 100vh;       /* Ensure the container takes at least the full height of the viewport */
-}
+  /* min-height: 100vh;        */
 
 .main-content {
   flex: 1;

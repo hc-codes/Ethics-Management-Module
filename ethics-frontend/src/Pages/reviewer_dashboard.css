@@ -1,0 +1,38 @@
+ /* Style for the applications container */
+.applications-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 20px;
+}
+
+/* Individual application card styling */
+.application-card {
+    background: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Title of the application */
+.application-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Supervisor information */
+.application-supervisor {
+    font-size: 1rem;
+    color: #4a4a4a;
+}
+
+/* When there are no applications */
+.no-applications {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 20px;
+}

@@ -1,0 +1,51 @@
+/* Student List as Bordered List */
+.student-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 800px; /* Set max width for the container */
+    margin: 0 auto;
+}
+
+/* Individual Student Item */
+.student-item {
+    background: #ffffff;
+    border: 2px solid #ccc; /* Border to make it rectangular */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+/* Student Info */
+.student-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    width: 100%;
+}
+.student-container
+{
+    align-items: left;
+}
+/* Student Name */
+.student-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* View Details Link */
+.view-details {
+    color: #007bff;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.view-details:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

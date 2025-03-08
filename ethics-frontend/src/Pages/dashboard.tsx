@@ -3,6 +3,7 @@ import Header from '../components/header';
 import NavBar from '../components/navbar';
 import React, { useState } from "react";
 import './dashboard.css';
+import DashboardHeader from '../Components/dashboardheader';
 
 const departments = [
     {
@@ -57,7 +58,7 @@ const Dashboard: React.FC = () => {
 
     return (
         <div className="app-container">
-            <Header title="University Research Management System" userName="John Doe" />
+            <DashboardHeader title="University Research Management System" />
             <NavBar />
             <main className="main-content">
                 <div className="max-w-6xl mx-auto p-6">

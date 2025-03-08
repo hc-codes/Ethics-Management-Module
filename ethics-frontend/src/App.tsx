@@ -6,6 +6,7 @@ import SupervisorDashboard from './Pages/supervisor_dashboard'; // Ensure the pa
 import Dashboard from './Pages/dashboard';
 import EthicsReviewerDashboard from './Pages/reviewer_dashboard';
 import SupervisorEthics from './Pages/supervisor_ethics';
+import LoginPage from './Pages/login';
 
 const App: React.FC = () => {
     const [message, setMessage] = useState<string>("Loading...");
@@ -31,6 +32,7 @@ const App: React.FC = () => {
                     <Route path="/ethics_reviewer" element={<EthicsReviewerDashboard />} />
                     <Route path="/supervisor" element={<SupervisorDashboard />} />
                     <Route path="/supervisor_ethics" element={<SupervisorEthics />} />
+                    <Route path="/login" element={<LoginPage />} />
 
                     {/* Add more routes here as needed */}
                 </Routes>
