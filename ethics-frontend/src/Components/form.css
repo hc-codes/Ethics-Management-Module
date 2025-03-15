@@ -24,3 +24,151 @@ input,  select {
     min-width: 100% !important; /* Prevents shrinking */
     box-sizing: border-box;
   }
+
+  /* Form container */
+.form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Disclaimer Section */
+.disclaimer-section {
+  background-color: #f1f5f9;
+  padding: 16px;
+  border-left: 4px solid #3b82f6;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.disclaimer-text {
+  color: #4b5563;
+  margin-top: 8px;
+}
+
+.link {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Form Input Group */
+.form-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+/* Form Inputs */
+.form-input {
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+/* Textarea */
+.form-textarea {
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  min-height: 150px;
+}
+
+/* Checkbox Fieldset */
+.checkbox-fieldset {
+  border: 1px solid #d1d5db;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Checkbox Item */
+.checkbox-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex: 1 1 150px;  /* To control the size of each checkbox group */
+}
+
+/* Checkbox Label */
+.checkbox-item label {
+  font-size: 14px;
+}
+
+/* Keep the checkbox aligned properly with the label */
+.checkbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+
+.fieldset-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* File Upload Section */
+.file-upload-section {
+  margin-top: 24px;
+}
+
+.file-input {
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.file-list {
+  margin-top: 8px;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f1f5f9;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.remove-file-btn {
+  color: #e11d48;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: #16a34a;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.submit-btn:hover {
+  background-color: #15803d;
+}

@@ -100,3 +100,40 @@ input:focus {
 .toggle-link:hover {
     text-decoration: underline;
 }
+/* Department Dropdown */
+select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Dropdown focus effect */
+select:focus {
+    border-color: #007bff;
+}
+
+/* Ensuring the dropdown stays consistent in spacing */
+.form-group select {
+    appearance: none; /* Removes default browser styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Arrow for the dropdown */
+.form-group {
+    position: relative;
+}
+
+.form-group::after {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #666;
+    pointer-events: none;
+}
