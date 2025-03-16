@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom"; // Correct import
-import './App.css';
-import SupervisorDashboard from './Pages/supervisor_dashboard'; // Ensure the path is correct
-import Dashboard from './Pages/dashboard';
-import EthicsReviewerDashboard from './Pages/reviewer_dashboard';
-import SupervisorEthics from './Pages/supervisor_ethics';
-import LoginPage from './Pages/login';
+import { Routes, Route, Navigate } from "react-router-dom"; // ✅ Use Navigate
+import "./App.css";
+import SupervisorDashboard from "./Pages/supervisor_dashboard";
+import Dashboard from "./Pages/dashboard";
+import EthicsReviewerDashboard from "./Pages/reviewer_dashboard";
+import SupervisorEthics from "./Pages/supervisor_ethics";
+import LoginPage from "./Pages/login";
 
 const App: React.FC = () => {
     const [message, setMessage] = useState<string>("Loading...");
@@ -18,6 +18,7 @@ const App: React.FC = () => {
                 <Route path="/supervisor" element={<SupervisorDashboard />} />
                 <Route path="/supervisor_ethics" element={<SupervisorEthics />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </main>
     );

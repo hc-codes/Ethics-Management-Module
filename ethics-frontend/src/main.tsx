@@ -1,12 +1,13 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import { BrowserRouter } from 'react-router-dom'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom"; // ✅ Import BrowserRouter
+import "./index.css";
+import App from "./App.tsx";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter basename="/Ethics-Management-Module"></BrowserRouter>
-    <App />
+    <BrowserRouter basename="/Ethics-Management-Module">
+      <App />
+    </BrowserRouter>
   </StrictMode>
-)
+);
