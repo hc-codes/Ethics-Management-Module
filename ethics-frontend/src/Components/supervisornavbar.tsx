@@ -1,6 +1,6 @@
 // src/components/NavBar.tsx
 import React from 'react';
-import './navBar.css'; // Optional: for styling
+import './navbar.css'; // Optional: for styling
 
 const SupervisorNavBar: React.FC = () => {
     return (

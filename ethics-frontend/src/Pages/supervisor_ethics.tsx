@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Footer from '../components/footer';
-import Header from '../components/header';
+import Footer from '../Components/footer';
+import Header from '../Components/header';
 import SupervisorEthicsNavBar from '../Components/supervisorethicsnavbar';
-import EthicsForm from '../components/ethicsform'; // Import the form
 import './supervisor.css';
+import EthicsForm from '../Components/ethicsform';
 
 const SupervisorEthics: React.FC = () => {
     const [selectedForm, setSelectedForm] = useState<string | null>(null);

@@ -1,9 +1,8 @@
-import Footer from '../components/footer';
-import Header from '../components/header';
-import NavBar from '../components/navbar';
+import Footer from '../Components/footer';
 import React, { useState } from "react";
 import './dashboard.css';
 import DashboardHeader from '../Components/dashboardheader';
+import NavBar from '../Components/navbar';
 
 const departments = [
     {
