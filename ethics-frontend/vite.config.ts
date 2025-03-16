@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default ({ mode }: { mode: string }) => {
-  // Load environment variables based on the current mode (development/production)
+  // Load environment variables based on the current mode (development/production).
   const env = loadEnv(mode, process.cwd());
 
   // You can directly use `process.env` after loading the environment variables.

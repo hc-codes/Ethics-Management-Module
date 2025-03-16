@@ -23,7 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ethics-frontend
+        with:
+          working-directory: ethics-frontend
 
       - name: Build project
         run: npm run build
@@ -33,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: production-files
-          path: ethics-frontend/dist
+          path: ./ethics-frontend/dist
 
   deploy:
     name: Deploy
