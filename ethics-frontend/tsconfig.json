@@ -1,15 +1,14 @@
-// {
-//   "files": [],
-//   "references": [
-//     { "path": "./tsconfig.app.json" },
-//     { "path": "./tsconfig.node.json" }
-//   ]
-// }
 {
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": ".",
-    "moduleResolution": "node",
+    "rootDir": "./",
+    "module": "Preserve",
+    "moduleResolution": "bundler",
     "allowJs": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,

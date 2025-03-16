@@ -1,8 +1,8 @@
 // src/components/SupervisorDashboard.tsx
 import React from 'react';
-import Footer from '../components/footer';
-import Header from '../components/header';
-import SupervisorNavBar from '../components/supervisornavbar';
+import Footer from '../Components/footer';
+import Header from '../Components/header';
+import SupervisorNavBar from '../Components/supervisornavbar';
 import './supervisor_dashboard.css'
 interface Student {
     id: number;

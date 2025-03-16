@@ -1,7 +1,7 @@
 // src/components/EthicsReviewerDashboard.tsx
-import React, { useState } from 'react';
-import Footer from '../components/footer';
-import Header from '../components/header';
+import React from 'react';
+import Footer from '../Components/footer';
+import Header from '../Components/header';
 import ReviewerNavBar from '../Components/reviewernavbar';
 import './reviewer_dashboard.css';
 interface Application {
