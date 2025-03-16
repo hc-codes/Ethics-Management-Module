@@ -4,53 +4,65 @@ import './form.css';
 const EthicsForm: React.FC = () => {
     const [formData, setFormData] = useState({
         clarifications: "",
-        applicationtitle: "",
-        applicationnumber: "",
-        supervisorName: "",
-        supervisorEmail: "",
-        applicantName: "",
-        applicantEmail: "",
-        projectTitle: "",
-        startDate: "",
-        endDate: "",
-        supervisorDeclaration: "",
+        application_title: "",
+        application_number: "",
+        supervisor_name: "",
+        supervisor_email: "",
+        applicant_name: "",
+        applicant_email: "",
+        project_title: "",
+        start_date: "",
+        end_date: "",
         declarationDate: "",
-        humanParticipants: {
-            vulnerablePersons: false,
-            under18: false,
+        human_participants: {
+            vulnerable_persons: false,
+            under_18: false,
             patients: false,
             staff: false,
         },
-        subjectMatter: {
-            sensitiveIssues: false,
-            illegalActivities: false,
-            selfRespectRisk: false,
+        subject_matter: {
+            sensitive_issues: false,
+            illegal_activities: false,
+            self_respect_risk: false,
         },
     });
     const [files, setFiles] = useState<File[]>([]);
 
+    // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     if (e.target.files) {
+    //         setFiles([...files, ...Array.from(e.target.files)]);
+    //     }
+    // };
 
+    // const handleFileRemove = (index: number) => {
+    //     setFiles(files.filter((_, i) => i !== index));
+    // };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) {
-            setFiles([...files, ...Array.from(e.target.files)]);
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ) => {
+        const target = e.target as HTMLInputElement;
+        const { name, value, type, checked } = target;
+
+        // Check if the name refers to a nested field
+        if (name.includes('.')) {
+            const [parent, child] = name.split('.');
+            setFormData((prev) => ({
+                ...prev,
+                [parent]: {
+                    ...prev[parent],
+                    [child]: type === 'checkbox' ? checked : value,
+                },
+            }));
+        } else {
+            setFormData((prev) => ({
+                ...prev,
+                [name]: type === 'checkbox' ? checked : value,
+            }));
         }
     };
 
-    const handleFileRemove = (index: number) => {
-        setFiles(files.filter((_, i) => i !== index));
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-        const target = e.target as HTMLInputElement;
-        const { name, value, type, checked } = target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: type === "checkbox" ? checked : value,
-        }));
-    };
-
-    const handleCheckboxChange = (category: "humanParticipants" | "subjectMatter", field: string) => {
+    const handleCheckboxChange = (category: "human_participants" | "subject_matter", field: string) => {
         setFormData((prev) => ({
             ...prev,
             [category]: {
@@ -60,9 +72,57 @@ const EthicsForm: React.FC = () => {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form Data Submitted", formData);
+
+        // Prepare form data for submission
+        const data = new FormData();
+        data.append("clarifications", formData.clarifications);
+        data.append("application_title", formData.application_title);
+        data.append("application_number", formData.application_number);
+        data.append("supervisor_name", formData.supervisor_name);
+        data.append("supervisor_email", formData.supervisor_email);
+        data.append("applicant_name", formData.applicant_name);
+        data.append("applicant_email", formData.applicant_email);
+        data.append("project_title", formData.project_title);
+        data.append("start_date", formData.start_date);
+        data.append("end_date", formData.end_date);
+        data.append("declaration_date", formData.declarationDate);
+
+        // Add human participants & subject matter data
+        Object.entries(formData.human_participants).forEach(([key, value]) => {
+            data.append(`human_participants[${key}]`, String(value));
+        });
+        Object.entries(formData.subject_matter).forEach(([key, value]) => {
+            data.append(`subject_matter[${key}]`, String(value));
+        });
+
+        // // Append files to FormData
+        // files.forEach((file) => {
+        //     data.append("files", file);
+        // });
+
+        // Make the API request
+        try {
+            const response = await fetch('http://127.0.0.1:8000/ethics/form', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem("auth_token")}` // Include the authentication token if needed
+                },
+                body: data,
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to submit form');
+            }
+
+            const responseData = await response.json();
+            console.log('Form submitted successfully:', responseData);
+            alert('Form submitted successfully!');
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('There was an error submitting the form.');
+        }
     };
 
     return (
@@ -83,22 +143,6 @@ const EthicsForm: React.FC = () => {
                     If this is an existing application which requires clarification, please proceed to <strong>Section A</strong>.
                 </p>
             </div>
-
-            {/* Supervisor Declaration
-            <div className="supervisor-declaration-section">
-                <h3 className="section-title">Supervisor/Principal Investigator Declaration</h3>
-                <p className="section-text">
-                    I, the undersigned, hereby declare that this submission is entirely the work of my own and my research team (i.e., students, collaborating staff, etc.). I understand the ethical implications of my research and this work meets, to the best of my knowledge, the requirements of the Faculty of Science & Engineering Research Ethics Committee. I confirm that I have reviewed this application and agree to its submission for review.
-                </p>
-
-                <div className="form-input-group">
-                    <label className="form-label">Supervisor/Principal Investigator*:</label>
-                    <input type="text" name="supervisorDeclaration" value={formData.supervisorDeclaration} onChange={handleChange} className="form-input" required placeholder="Type your name " />
-
-                    <label className="form-label">Date:</label>
-                    <input type="date" name="declarationDate" value={formData.declarationDate} onChange={handleChange} className="form-input" required />
-                </div>
-            </div> */}
 
             {/* Clarifications Section */}
             <div className="clarifications-section">
@@ -124,12 +168,12 @@ const EthicsForm: React.FC = () => {
 
                 <div className="form-input-group">
                     <label className="form-label">Application No.:</label>
-                    <input type="text" name="applicationnumber" value={formData.applicationnumber} onChange={handleChange} className="form-input" required />
+                    <input type="text" name="application_number" value={formData.application_number} onChange={handleChange} className="form-input" required />
                 </div>
 
                 <div className="form-input-group">
                     <label className="form-label">Application Title:</label>
-                    <input type="text" name="applicationtitle" value={formData.applicationtitle} onChange={handleChange} className="form-input" required />
+                    <input type="text" name="application_title" value={formData.application_title} onChange={handleChange} className="form-input" required />
                 </div>
             </div>
 
@@ -137,45 +181,45 @@ const EthicsForm: React.FC = () => {
             <h2 className="section-title">SECTION B</h2>
             <div className="form-input-group">
                 <label className="form-label">Supervisor Name:</label>
-                <input type="text" name="supervisorName" value={formData.supervisorName} onChange={handleChange} className="form-input" required />
+                <input type="text" name="supervisor_name" value={formData.supervisor_name} onChange={handleChange} className="form-input" required />
             </div>
 
             <div className="form-input-group">
                 <label className="form-label">Supervisor Email:</label>
-                <input type="email" name="supervisorEmail" value={formData.supervisorEmail} onChange={handleChange} className="form-input" required />
+                <input type="email" name="supervisor_email" value={formData.supervisor_email} onChange={handleChange} className="form-input" required />
             </div>
 
             <div className="form-input-group">
                 <label className="form-label">Applicant Name:</label>
-                <input type="text" name="applicantName" value={formData.applicantName} onChange={handleChange} className="form-input" required />
+                <input type="text" name="applicant_name" value={formData.applicant_name} onChange={handleChange} className="form-input" required />
             </div>
 
             <div className="form-input-group">
                 <label className="form-label">Applicant Email:</label>
-                <input type="email" name="applicantEmail" value={formData.applicantEmail} onChange={handleChange} className="form-input" required />
+                <input type="email" name="applicant_email" value={formData.applicant_email} onChange={handleChange} className="form-input" required />
             </div>
 
             <div className="form-input-group">
                 <label className="form-label">Project Title:</label>
-                <input type="text" name="projectTitle" value={formData.projectTitle} onChange={handleChange} className="form-input" required />
+                <input type="text" name="project_title" value={formData.project_title} onChange={handleChange} className="form-input" required />
             </div>
 
             <div className="form-input-group">
                 <label className="form-label">Start Date:</label>
-                <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} className="form-input" required />
+                <input type="date" name="start_date" value={formData.start_date} onChange={handleChange} className="form-input" required />
             </div>
 
             <div className="form-input-group">
                 <label className="form-label">End Date:</label>
-                <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} className="form-input" required />
+                <input type="date" name="end_date" value={formData.end_date} onChange={handleChange} className="form-input" required />
             </div>
 
             {/* Human Participants Section */}
             <fieldset className="checkbox-fieldset">
                 <legend className="fieldset-title">Human Participants</legend>
-                {Object.entries(formData.humanParticipants).map(([key, value]) => (
+                {Object.entries(formData.human_participants).map(([key, value]) => (
                     <div key={key} className="checkbox-item">
-                        <input type="checkbox" checked={value} onChange={() => handleCheckboxChange("humanParticipants", key)} />
+                        <input type="checkbox" checked={value} onChange={() => handleCheckboxChange("human_participants", key)} />
                         <label>{key.replace(/([A-Z])/g, " $1")}</label>
                     </div>
                 ))}
@@ -184,15 +228,15 @@ const EthicsForm: React.FC = () => {
             {/* Subject Matter Section */}
             <fieldset className="checkbox-fieldset">
                 <legend className="fieldset-title">Study Subject Matter</legend>
-                {Object.entries(formData.subjectMatter).map(([key, value]) => (
+                {Object.entries(formData.subject_matter).map(([key, value]) => (
                     <div key={key} className="checkbox-item">
-                        <input type="checkbox" checked={value} onChange={() => handleCheckboxChange("subjectMatter", key)} />
+                        <input type="checkbox" checked={value} onChange={() => handleCheckboxChange("subject_matter", key)} />
                         <label>{key.replace(/([A-Z])/g, " $1")}</label>
                     </div>
                 ))}
             </fieldset>
 
-            <div className="file-upload-section">
+            {/* <div className="file-upload-section">
                 <h3 className="section-title">Upload Related Documents</h3>
                 <input
                     type="file"
@@ -213,7 +257,7 @@ const EthicsForm: React.FC = () => {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </div> */}
 
             <button type="submit" onClick={handleSubmit} className="submit-btn">
                 Submit

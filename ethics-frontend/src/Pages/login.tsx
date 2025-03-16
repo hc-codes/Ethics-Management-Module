@@ -50,8 +50,8 @@ const LoginPage: React.FC = () => {
 
             if (!isRegistering) {
                 // Store tokens
-                localStorage.setItem("access_token", response.data.access);
-                localStorage.setItem("refresh_token", response.data.refresh);
+                sessionStorage.setItem("auth_token", response.data.access);
+                sessionStorage.setItem("refresh_token", response.data.refresh);
                 alert("Login successful!");
 
                 // Redirect to the appropriate dashboard
