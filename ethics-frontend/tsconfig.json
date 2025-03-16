@@ -7,6 +7,8 @@
 // }
 {
   "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": ".",
     "moduleResolution": "node",
     "allowJs": true,
     "jsx": "react-jsx",
@@ -16,5 +18,11 @@
       "ES2017",
       "ESNext"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "eslint.config.js" // Exclude ESLint config file
+  ]
 }

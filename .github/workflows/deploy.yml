@@ -1,44 +1,50 @@
-name: Deploy React App to GitHub Pages
+name: Deploy
 
 on:
   push:
     branches:
-      - master  # Change if your default branch is different
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+      - master
+    paths:
+     - 'ethics-frontend/**'
 
 jobs:
-  build-deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 18  # Specify Node.js version for consistency
 
-      - name: Install Dependencies
-        run: |
-          cd ethics-frontend
-          npm install
+      - name: Install dependencies
+        run: npm install
+        working-directory: ethics-frontend
 
-      - name: Build React App
-        run: |
-          cd ethics-frontend
-          npm run build
+      - name: Build project
+        run: npm run build
+        working-directory: ethics-frontend
 
-      - name: Upload Build Artifacts
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v4
         with:
-          path: ethics-frontend/build
+          name: production-files
+          path: ethics-frontend/dist
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+      
