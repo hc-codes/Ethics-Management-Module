@@ -11,6 +11,6 @@ export default ({ mode }: { mode: string }) => {
   return defineConfig({
     plugins: [react()],
     // Use the loaded environment variables for base path
-    base: process.env.VITE_ENV === 'production' ? '/Ethics-Management-Module/' : '/',
+    base: '/Ethics-Management-Module/'
   });
 };

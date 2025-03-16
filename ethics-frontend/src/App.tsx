@@ -11,17 +11,15 @@ const App: React.FC = () => {
     const [message, setMessage] = useState<string>("Loading...");
 
     return (
-        <Router>
-            <main className="main-content">
-                <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/ethics_reviewer" element={<EthicsReviewerDashboard />} />
-                    <Route path="/supervisor" element={<SupervisorDashboard />} />
-                    <Route path="/supervisor_ethics" element={<SupervisorEthics />} />
-                    <Route path="/login" element={<LoginPage />} />
-                </Routes>
-            </main>
-        </Router>
+        <main className="main-content">
+            <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/ethics_reviewer" element={<EthicsReviewerDashboard />} />
+                <Route path="/supervisor" element={<SupervisorDashboard />} />
+                <Route path="/supervisor_ethics" element={<SupervisorEthics />} />
+                <Route path="/login" element={<LoginPage />} />
+            </Routes>
+        </main>
     );
 };
 
