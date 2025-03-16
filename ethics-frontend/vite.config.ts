@@ -5,7 +5,7 @@ export default ({ mode }: { mode: string }) => {
   // Load environment variables based on the current mode (development/production)
   const env = loadEnv(mode, process.cwd());
 
-  // You can directly use `process.env` after loading the environment variables
+  // You can directly use `process.env` after loading the environment variables.
   process.env = { ...process.env, ...env };
 
   return defineConfig({
