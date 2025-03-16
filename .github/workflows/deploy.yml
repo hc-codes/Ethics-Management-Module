@@ -1,0 +1,44 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # Change if your default branch is different
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: |
+          cd ethics-frontend
+          npm install
+
+      - name: Build React App
+        run: |
+          cd ethics-frontend
+          npm run build
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ethics-frontend/build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
